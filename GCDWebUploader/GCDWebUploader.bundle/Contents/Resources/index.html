@@ -150,21 +150,37 @@
             </button>
           {% } %}
         </td>
-        <td class="column-name"><p class="edit">{%=o.name%}</p></td>
+        
+        <td class="column-name">
+        {% if (o.size == null && ['Music','Video','Document'].indexOf(o.name) >= 0 )  { %}
+            {%=o.name%}
+        {% } else { %}
+            <p class="edit">{%=o.name%}</p>
+        {% } %}
+         </td>
+        
         <td class="column-size">
           {% if (o.size != null) { %}
             <p>{%=formatFileSize(o.size)%}</p>
           {% } %}
         </td>
         <td class="column-move">
-          <button type="button" class="btn btn-default btn-xs button-move">
-            <span class="glyphicon glyphicon glyphicon-share-alt"></span>
-          </button>
+        {% if (o.size == null && ['Music','Video','Document'].indexOf(o.name) >= 0 )  { %}
+            
+        {% } else { %}
+            <button type="button" class="btn btn-default btn-xs button-move">
+                <span class="glyphicon glyphicon glyphicon-share-alt"></span>
+            </button>
+        {% } %}
         </td>
         <td class="column-delete">
-          <button type="button" class="btn btn-danger btn-xs button-delete">
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
+        {% if (o.size == null && ['Music','Video','Document'].indexOf(o.name) >= 0 )  { %}
+        
+        {% } else { %}
+            <button type="button" class="btn btn-danger btn-xs button-delete">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        {% } %}
         </td>
       </tr>
     </script>
